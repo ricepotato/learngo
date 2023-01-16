@@ -38,6 +38,13 @@ func superAdd(numbers ...int) int {
 	return total
 }
 
+func canIDrink(age int) bool {
+	if koreanAge := age + 2; koreanAge < 18 {
+		return false
+	}
+	return true
+}
+
 func main() {
 	const name string = "ricepotato"  // initialize constants
 	var nameVar string = "ricepotato" // initialize variables
@@ -62,4 +69,6 @@ func main() {
 
 	total := superAdd(1, 3, 3, 4, 5, 4, 7, 8, 2, 0)
 	fmt.Println(total)
+
+	fmt.Println(canIDrink(16))
 }
