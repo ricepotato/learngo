@@ -21,6 +21,23 @@ func repeatMe(words ...string) {
 	fmt.Println(words)
 }
 
+// 리턴값에 변수명을 지정해줄 수 있음
+func lengAndUpperV2(name string) (length int, uppercase string) {
+	defer fmt.Println("I'm done") // defer는 함수가 끝나고 실행됨
+	length = len(name)
+	uppercase = strings.ToUpper(name)
+	return
+}
+
+// range 는 for문에서 사용할 수 있음
+func superAdd(numbers ...int) int {
+	total := 0
+	for _, num := range numbers {
+		total = total + num
+	}
+	return total
+}
+
 func main() {
 	const name string = "ricepotato"  // initialize constants
 	var nameVar string = "ricepotato" // initialize variables
@@ -37,5 +54,12 @@ func main() {
 	fmt.Println(totalLength)
 	fmt.Println(upperName)
 
+	totalLength, upperName = lengAndUpperV2("ricepotato2")
+	fmt.Println(totalLength)
+	fmt.Println(upperName)
+
 	repeatMe("ricepotato", "sukjun", "sagong")
+
+	total := superAdd(1, 3, 3, 4, 5, 4, 7, 8, 2, 0)
+	fmt.Println(total)
 }
