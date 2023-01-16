@@ -45,6 +45,16 @@ func canIDrink(age int) bool {
 	return true
 }
 
+func canIDrinkSwitch(age int) bool {
+	switch {
+	case age < 18:
+		return false
+	case 18 == 18:
+		return true
+	}
+	return false
+}
+
 func main() {
 	const name string = "ricepotato"  // initialize constants
 	var nameVar string = "ricepotato" // initialize variables
@@ -71,4 +81,5 @@ func main() {
 	fmt.Println(total)
 
 	fmt.Println(canIDrink(16))
+	fmt.Println(canIDrinkSwitch(30))
 }
