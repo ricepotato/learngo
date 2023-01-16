@@ -55,6 +55,13 @@ func canIDrinkSwitch(age int) bool {
 	return false
 }
 
+func pointerFunc() {
+	a := 2
+	b := &a
+	a = 10
+	fmt.Println(a, b)
+}
+
 func main() {
 	const name string = "ricepotato"  // initialize constants
 	var nameVar string = "ricepotato" // initialize variables
@@ -82,4 +89,6 @@ func main() {
 
 	fmt.Println(canIDrink(16))
 	fmt.Println(canIDrinkSwitch(30))
+
+	pointerFunc()
 }
