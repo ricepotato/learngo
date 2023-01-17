@@ -22,4 +22,10 @@ func main() {
 		log.Fatalln(err) // kill the program
 	}
 	fmt.Println(account.Balance())
+	fmt.Println(account.Owner())
+
+	account.ChangeOwner("new ricepotato")
+
+	fmt.Println(account.Owner())
+
 }
