@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"log"
 
 	"github.com/ricepotato/learngo/accounts"
 )
@@ -18,14 +17,14 @@ func main() {
 	fmt.Println(account.Balance())
 	err := account.Withdraw(20)
 	if err != nil {
-		//fmt.Println(err) // just print error
-		log.Fatalln(err) // kill the program
+		fmt.Println(err) // just print error
+		// log.Fatalln(err) // kill the program
 	}
 	fmt.Println(account.Balance())
 	fmt.Println(account.Owner())
 
 	account.ChangeOwner("new ricepotato")
 
-	fmt.Println(account.Owner())
+	fmt.Println(account)
 
 }
