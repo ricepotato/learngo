@@ -62,6 +62,27 @@ func pointerFunc() {
 	fmt.Println(a, b)
 }
 
+func arrFunc() {
+	// limited array
+	limitedNames := [5]string{"nico", "lynn", "dal", "japari", "flynn"}
+	limitedNames[2] = "alala"
+	fmt.Println(limitedNames)
+
+	unlimitedNames := []string{"nico"}
+	fmt.Println(unlimitedNames)
+	// functional. append not change original array
+	newUnlimitedNames := append(unlimitedNames, "ricepotato")
+	fmt.Println(newUnlimitedNames)
+}
+
+func mapFunc() {
+	nico := map[string]string{"name": "nico", "age": "12"}
+	fmt.Println(nico)
+	for key, value := range nico {
+		fmt.Println(key, value)
+	}
+}
+
 func main() {
 	const name string = "ricepotato"  // initialize constants
 	var nameVar string = "ricepotato" // initialize variables
@@ -91,4 +112,5 @@ func main() {
 	fmt.Println(canIDrinkSwitch(30))
 
 	pointerFunc()
+	arrFunc()
 }
