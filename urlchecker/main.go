@@ -4,13 +4,19 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
-	"time"
 )
 
 var errRequestFailed = errors.New("request failed")
 
+type requestResult struct {
+	url    string
+	status string // OK, FAILED
+}
+
 // the main function doesn't wait for go routines to finish
 func main() {
+	results := map[string]string{}
+	c := make(chan requestResult)
 	urls := []string{
 		"https://airbnb.com",
 		"https://www.google.com",
@@ -21,37 +27,27 @@ func main() {
 		"https://www.instagram.com",
 	}
 
-	results := map[string]string{}
-
 	for _, url := range urls {
-		result := "OK"
-		err := hitURL(url)
-		if err != nil {
-			result = "FAILED"
-		}
-		results[url] = result
+		go hitURL(url, c)
 	}
 
-	//fmt.Println(results)
+	for i := 0; i < len(urls); i++ {
+		//fmt.Println(<-c)
+		result := <-c
+		results[result.url] = result.status
+	}
 
-	for url, result := range results {
-		fmt.Println(url, result)
+	for url, status := range results {
+		fmt.Println(url, status)
 	}
 }
 
-func hitURL(url string) error {
+func hitURL(url string, c chan<- requestResult) {
 	fmt.Println(fmt.Sprint("Hitting URL: ", url))
 	resp, err := http.Get(url)
+	status := "OK"
 	if err != nil || resp.StatusCode >= 400 {
-		fmt.Println(err)
-		return errRequestFailed
+		status = "FAILED"
 	}
-	return nil
-}
-
-func sexyCount(person string) {
-	for i := 0; i < 10; i++ {
-		fmt.Println(person, "is sexy", i)
-		time.Sleep(time.Second)
-	}
+	c <- requestResult{url: url, status: status}
 }
