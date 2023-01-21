@@ -4,6 +4,8 @@ import (
 	"fmt"
 
 	"github.com/ricepotato/learngo/accounts"
+
+	"github.com/ricepotato/learngo/mydict"
 )
 
 func main() {
@@ -27,4 +29,37 @@ func main() {
 
 	fmt.Println(account)
 
+	dictionary := mydict.Dictionary{}
+	dictionary["hello"] = "hello"
+	dictionary["first"] = "First Word"
+
+	fmt.Println(dictionary)
+
+	value, err := dictionary.Search("hello")
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println(value)
+	}
+
+	value2, err2 := dictionary.Search("hello2")
+	if err2 != nil {
+		fmt.Println(err2)
+	} else {
+		fmt.Println(value2)
+	}
+
+	err3 := dictionary.Add("hello2", "hello2")
+	if err3 != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println("success")
+	}
+
+	err4 := dictionary.Add("hello2", "hello2")
+	if err4 != nil {
+		fmt.Println("world already exists")
+	} else {
+		fmt.Println("success")
+	}
 }
