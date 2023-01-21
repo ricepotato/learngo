@@ -62,4 +62,19 @@ func main() {
 	} else {
 		fmt.Println("success")
 	}
+
+	err5 := dictionary.Update("hello2", "hello2 updated")
+	if err5 != nil {
+		fmt.Println(err5)
+	} else {
+		fmt.Println("success")
+	}
+
+	err6 := dictionary.Update("hello3", "hello3 updated")
+	if err6 != nil {
+		fmt.Println(err6)
+	} else {
+		fmt.Println("success")
+	}
+
 }
