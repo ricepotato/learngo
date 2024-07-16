@@ -1,4 +1,4 @@
-package main
+package urlchecker
 
 import (
 	"errors"
@@ -14,7 +14,7 @@ type requestResult struct {
 }
 
 // the main function doesn't wait for go routines to finish
-func main() {
+func check() {
 	results := map[string]string{}
 	c := make(chan requestResult)
 	urls := []string{

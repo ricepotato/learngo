@@ -1,4 +1,4 @@
-package mydict
+package utils
 
 import "errors"
 
